@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+
+<head>
+	<meta charset="utf-8" /> 
+	<title>Formularz</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="style.css" type="text/css" />
+
+	
+</head>
+
+<body>
+	<header>
+    	<h1>Wypełnij formularz</h1>
+	</header>
+  
+	<main>
+
+	    <div class="form">
+	      <form class="formsection">
+<!-- Dane transportowe -->
+	        <p>Transport z:</p>
+	        <p><input type="text" name="transport_from" required></p>
+	        
+	        <p>Transport do:</p>
+	        <p><input type="text" name="transport_to" required></p>
+	        
+	        <p>Typ samolotu:</p>
+	          <p>
+	            <input type="radio" name="plane_type" id="airbus" value="plane_airbus" required>
+	            <label for="airbus">Airbus A380</label>
+	          </p>
+	          <p>
+	            <input type="radio" name="plane_type" id="boeing" value="plane_boeing">
+	            <label for="boeing">Boeing 747</label>
+	          </p>
+	        
+	        <p>Dokumenty przewozowe:</p>
+	        <div class="document_place">
+	          <input type="file" id="fileupload" name="files" multiple accept:'.jpg,.png,.doc,.docx,.pdf' onchange="addFiles(event)">
+
+	          <label for="fileupload" class="fileLabel" ondragover="overrideDefault(event);" ondragenter="overrideDefault(event);" ondragleave="overrideDefault(event);" ondrop="overrideDefault(event);;
+	        addFiles(event);">
+	            <i class="fa fa-download fa-5x bigger" aria-hidden="true"></i>
+	            <br>
+	            <span id="fileLabelText">Wybierz plik lub przeciagnij.</span>
+	          </label>
+	        </div>
+
+	       
+	        <p>Wybierz date:</p>
+	        <p><input type="date" name="date" value="2018-06-04" min="2018-06-04" required></p>
+	        
+ <!-- Opis ładunku -->
+	        <div class="load">
+	          <p>Ładunek:</p>
+	          <p><input type="text" name="load_name" class="loadNames" id="element" required placeholder="nazwa"></p>
+	          <p><input type="number" min='0' name="load_weight" class="loadNumbs" required placeholder="waga [kg]"></p>
+	            <p>
+	              <select name="load_type" required>
+	                <option disabled selected>Typ ładunku</option>
+	                <option value="load_type_normal">zwykły</option>
+	                <option value="load_type_dangerous">niebezpieczny</option>
+	              </select> 
+	            </p>
+	          
+	          <div id="container"></div>
+	          
+	          <div id="buttonNewDelete">
+	            <input type="submit" class="new_load_button" id="btnNewLoad" value="Dodaj">
+	            <input type="submit" id="deleteLoad" value="Usuń">
+	          </div>  
+	        </div>
+	        
+<!--Koniec formularza, wyślij -->
+	        <div class="button_place">
+	          <input type="submit" class="send_button" value="Wyślij">
+	        </div>
+	      </form>
+	    </div>
+	    
+	    <div id="alert">
+	        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+	        <strong>Zmień date!</strong> Możesz wybrać jedynie pon-pt.
+	    </div>
+  </main>
+	
+		
+
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
